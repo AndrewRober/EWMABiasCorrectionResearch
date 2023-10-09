@@ -7,7 +7,7 @@ namespace EWMABiasCorrectionResearch
     public partial class Form1 : Form
     {
         #region Properties and fields
-        private float trialBeta = 0.80f;
+        private float trialBeta = 0.90f;
         private int numberOfPoints = 100;
         private float seriesWidth = 5.0f;
 
@@ -96,9 +96,9 @@ namespace EWMABiasCorrectionResearch
         {
             SeriesList.Add(GenerateAverageSeries(series));
             SeriesList.Add(new Series(standardEWMAHighBetaZeroInitial.CalculateSeries(series.Points),
-                Color.Orange, ChartType.Line, "EWMA Vt/1+β**t, β= 0.90, V₀= 0", 6, SeriesType.EWMAWithBias));
+                Color.Orange, ChartType.Line, $"EWMA Vt/1+β**t, β= {trialBeta}, V₀= 0", 6, SeriesType.EWMAWithBias));
             SeriesList.Add(new Series(standardEWMAWithoutBiasCorrection.CalculateSeries(series.Points),
-                Color.Yellow, ChartType.Line, "EWMA no bias, β= 0.90, V₀= 0", 4, SeriesType.EWMAWithoutBias));
+                Color.Yellow, ChartType.Line, $"EWMA no bias, β= {trialBeta}, V₀= 0", 4, SeriesType.EWMAWithoutBias));
         }
 
         private Series GenerateAverageSeries(Series series) => new Series(AverageCalculator.CalculateSeries(series.Points),
