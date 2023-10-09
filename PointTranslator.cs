@@ -13,8 +13,8 @@
         /// <returns>The translated point.</returns>
         public static PointF TranslatePoint(PointF originalPoint, float maxX, float maxY, int pictureBoxWidth, int pictureBoxHeight)
         {
-            float x = (originalPoint.X / maxX) * (pictureBoxWidth - 2 * Form1.Padding) + Form1.Padding;
-            float y = (pictureBoxHeight - Form1.Padding) - (originalPoint.Y / maxY) * (pictureBoxHeight - 2 * Form1.Padding);
+            float x = (originalPoint.X / maxX) * (pictureBoxWidth - 2 * Form1.SeriesPadding) + Form1.SeriesPadding;
+            float y = (pictureBoxHeight - Form1.SeriesPadding) - (originalPoint.Y / maxY) * (pictureBoxHeight - 2 * Form1.SeriesPadding);
 
             return new PointF(x, y);
         }
@@ -30,8 +30,8 @@
         /// <returns>The original point.</returns>
         public static PointF ReverseTranslatePoint(PointF translatedPoint, float maxX, float maxY, int pictureBoxWidth, int pictureBoxHeight)
         {
-            float x = ((translatedPoint.X - Form1.Padding) / (pictureBoxWidth - 2 * Form1.Padding)) * maxX;
-            float y = ((pictureBoxHeight - Form1.Padding - translatedPoint.Y) / (pictureBoxHeight - 2 * Form1.Padding)) * maxY;
+            float x = ((translatedPoint.X - Form1.SeriesPadding) / (pictureBoxWidth - 2 * Form1.SeriesPadding)) * maxX;
+            float y = ((pictureBoxHeight - Form1.SeriesPadding - translatedPoint.Y) / (pictureBoxHeight - 2 * Form1.SeriesPadding)) * maxY;
 
             return new PointF(x, y);
         }
