@@ -6,6 +6,7 @@ namespace EWMABiasCorrectionResearch
 {
     public partial class Form1 : Form
     {
+        #region Properties and fields
         private float trialBeta = 0.80f;
         private int numberOfPoints = 100;
         private float seriesWidth = 5.0f;
@@ -35,6 +36,9 @@ namespace EWMABiasCorrectionResearch
                 ReDraw();
             }
         }
+        #endregion
+
+        public Form1() => InitializeComponent();
 
         public void ReDraw()
         {
@@ -42,53 +46,63 @@ namespace EWMABiasCorrectionResearch
             standardEWMAHighBetaZeroInitial = new EWMAWithBiasCorrection((Vt, Beta, index) => Vt / (1 - (float)Math.Pow(Beta, index + 1)), TrialBeta, 0.0f);
             foreach (var series in SeriesList.ToList())
             {
-                switch (series.SeriesType)
-                {
-                    case SeriesType.Constant:
-                        SeriesList.RemoveAll(s => s.SeriesType != SeriesType.Constant);
-                        GenerateAverages(series);
-                        break;
-                }
+                if (series.ChartType == ChartType.Line)
+                    continue;
+
+                SeriesList.RemoveAll(s => s.SeriesType != series.SeriesType);
+                GenerateAverages(series);
             }
             pictureBox1.Invalidate();
         }
 
-        public Form1()
-        {
-            InitializeComponent();
-        }
 
         private void GenerateCP(object sender, EventArgs e)
+        {
+            GenerateInternal(new Series(PointGenerator.GenerateConstantPoints((float)CPc_NBx.Value,
+                (int)NumOfPoints_NBx.Value, (float)CPs_NBx.Value), ColorPbx.BackColor,
+                ChartType.Scatter, DescTbx.Text, (float)WidthNbx.Value, SeriesType.Constant));
+        }
+
+        private void GenerateExp(object sender, EventArgs e)
+        {
+            GenerateInternal(new Series(PointGenerator.GenerateExponentialPoints((float)ExpB_NBx.Value,
+                (int)NumOfPoints_NBx.Value), ColorPbx.BackColor,
+                ChartType.Scatter, DescTbx.Text, (float)WidthNbx.Value, SeriesType.NormalDistribution));
+        }
+
+        private void GenerateSigmoid(object sender, EventArgs e)
+        {
+            GenerateInternal(new Series(PointGenerator.GenerateSigmoidPoints((int)NumOfPoints_NBx.Value), ColorPbx.BackColor,
+                ChartType.Scatter, DescTbx.Text, (float)WidthNbx.Value, SeriesType.Sigmoid));
+        }
+
+        private void GenerateInternal(Series series)
+        {
+            CleanSeries();
+            SeriesList.Add(series);
+            GenerateAverages(series);
+            pictureBox1.Invalidate();
+        }
+
+        private void CleanSeries()
         {
             if (SeriesList != null)
                 SeriesList.Clear();
             else
                 SeriesList = new List<Series>();
-
-
-            var series = new Series(PointGenerator.GenerateConstantPoints((float)CPc_NBx.Value,
-                (int)CPn_NBx.Value, (float)CPs_NBx.Value), CpcPbx.BackColor,
-                ChartType.Scatter, DescTbx.Text, (float)CPwNbx.Value, SeriesType.Constant);
-            SeriesList.Add(series);
-
-            GenerateAverages(series);
-
-            pictureBox1.Invalidate();
         }
 
         private void GenerateAverages(Series series)
         {
             SeriesList.Add(GenerateAverageSeries(series));
             SeriesList.Add(new Series(standardEWMAHighBetaZeroInitial.CalculateSeries(series.Points),
-                Color.Orange, ChartType.Line, "EWMA Vt/1+β**t, β= 0.90, V₀= 0", 4, SeriesType.EWMAWithBias));
+                Color.Orange, ChartType.Line, "EWMA Vt/1+β**t, β= 0.90, V₀= 0", 6, SeriesType.EWMAWithBias));
             SeriesList.Add(new Series(standardEWMAWithoutBiasCorrection.CalculateSeries(series.Points),
                 Color.Yellow, ChartType.Line, "EWMA no bias, β= 0.90, V₀= 0", 4, SeriesType.EWMAWithoutBias));
         }
 
-
         private Series GenerateAverageSeries(Series series) => new Series(AverageCalculator.CalculateSeries(series.Points),
                 Color.Green, ChartType.Line, "Actual Average", 4, SeriesType.Average);
-
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
@@ -198,7 +212,6 @@ namespace EWMABiasCorrectionResearch
             }
         }
 
-
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             if (SeriesList == null || SeriesList.Count == 0)
@@ -253,40 +266,6 @@ namespace EWMABiasCorrectionResearch
         private void NumberOfPointsValueChanged(object sender, EventArgs e) => numberOfPoints = (int)(sender as NumericUpDown).Value;
 
         private void WidthValueChanged(object sender, EventArgs e) => seriesWidth = (float)(sender as NumericUpDown).Value;
-    }
 
-    public class Series
-    {
-        public List<PointF> Points { get; }
-        public Color Color { get; }
-        public ChartType ChartType { get; }
-        public string Description { get; }
-        public float Width { get; }
-        public SeriesType SeriesType { get; }
-
-        public Series(List<PointF> points, Color color, ChartType chartType,
-            string description, float width, SeriesType seriesType)
-        {
-            Points = points;
-            Color = color;
-            ChartType = chartType;
-            Description = description;
-            Width = width;
-            SeriesType = seriesType;
-        }
-    }
-
-    public enum SeriesType
-    {
-        Constant,
-        NormalDistribution,
-        Exponential,
-        Sigmoid,
-        Polynomial,
-        Random,
-        SinWave,
-        Average,
-        EWMAWithBias,
-        EWMAWithoutBias
     }
 }

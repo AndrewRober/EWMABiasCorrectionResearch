@@ -33,23 +33,6 @@
         }
 
         /// <summary>
-        /// Generates a list of points that follow a normal distribution (bell curve).
-        /// </summary>
-        /// <param name="mean">The mean of the normal distribution.</param>
-        /// <param name="stdDev">The standard deviation of the normal distribution.</param>
-        /// <param name="numPoints">The number of points to generate.</param>
-        /// <returns>A list of points that follow a normal distribution.</returns>
-        public static List<PointF> GenerateNormalDistributionPoints(float mean, float stdDev, int numPoints)
-        {
-            var points = new List<PointF>();
-            var rand = new Random();
-            for (int i = 0; i < numPoints; i++)
-                points.Add(new PointF(i,
-                    mean + stdDev * (float)(Math.Sqrt(-2.0 * Math.Log((1.0 - rand.NextDouble()))) * Math.Sin(2.0 * Math.PI * (1.0 - rand.NextDouble())))));
-            return points;
-        }
-
-        /// <summary>
         /// Generates a list of points that follow an exponential function.
         /// </summary>
         /// <param name="baseValue">The base value for the exponential function.</param>
@@ -73,8 +56,9 @@
             var points = new List<PointF>();
             for (int i = 0; i < numPoints; i++)
             {
-                float y = (float)(1 / (1 + Math.Exp(-(10f * i / (numPoints - 1) - 5f))));
-                points.Add(new PointF(i, y));
+                float x = 100f * i / (numPoints - 1);
+                float y = (float)(1000 / (1 + Math.Exp(-(10f * x / 100 - 5f))));
+                points.Add(new PointF(x, y));
             }
             return points;
         }

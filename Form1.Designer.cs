@@ -39,30 +39,28 @@
             CPGenrateBtn = new Button();
             label3 = new Label();
             CPs_NBx = new NumericUpDown();
-            tabPage2 = new TabPage();
-            label8 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            button2 = new Button();
-            label9 = new Label();
-            numericUpDown2 = new NumericUpDown();
             tabPage3 = new TabPage();
+            button1 = new Button();
+            label8 = new Label();
+            ExpB_NBx = new NumericUpDown();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
             tabPage6 = new TabPage();
             tabPage7 = new TabPage();
             groupBox3 = new GroupBox();
             label7 = new Label();
-            CPbNbx = new NumericUpDown();
+            BetaNbx = new NumericUpDown();
             label6 = new Label();
-            CPwNbx = new NumericUpDown();
+            WidthNbx = new NumericUpDown();
             label5 = new Label();
             ChangeColorBtn = new Button();
             label1 = new Label();
             DescTbx = new TextBox();
-            CPn_NBx = new NumericUpDown();
+            NumOfPoints_NBx = new NumericUpDown();
             label4 = new Label();
-            CpcPbx = new PictureBox();
+            ColorPbx = new PictureBox();
             toolTip1 = new ToolTip(components);
+            button2 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
@@ -70,14 +68,14 @@
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CPc_NBx).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CPs_NBx).BeginInit();
-            tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ExpB_NBx).BeginInit();
+            tabPage4.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)CPbNbx).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)CPwNbx).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)CPn_NBx).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)CpcPbx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)BetaNbx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)WidthNbx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumOfPoints_NBx).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ColorPbx).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -116,7 +114,6 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
@@ -195,72 +192,11 @@
             CPs_NBx.TabIndex = 5;
             CPs_NBx.Value = new decimal(new int[] { 200, 0, 0, 0 });
             // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(label8);
-            tabPage2.Controls.Add(numericUpDown1);
-            tabPage2.Controls.Add(button2);
-            tabPage2.Controls.Add(label9);
-            tabPage2.Controls.Add(numericUpDown2);
-            tabPage2.Location = new Point(4, 44);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(270, 242);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "Normal Distribution";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(6, 10);
-            label8.Name = "label8";
-            label8.Size = new Size(57, 15);
-            label8.TabIndex = 2;
-            label8.Text = "Mean (x̄):";
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.DecimalPlaces = 2;
-            numericUpDown1.Location = new Point(140, 8);
-            numericUpDown1.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDown1.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(57, 23);
-            numericUpDown1.TabIndex = 3;
-            numericUpDown1.Value = new decimal(new int[] { 500, 0, 0, 0 });
-            // 
-            // button2
-            // 
-            button2.Location = new Point(122, 66);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 14;
-            button2.Text = "Generate";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(6, 39);
-            label9.Name = "label9";
-            label9.Size = new Size(128, 15);
-            label9.TabIndex = 4;
-            label9.Text = "Standard Deviation (σ):";
-            // 
-            // numericUpDown2
-            // 
-            numericUpDown2.DecimalPlaces = 2;
-            numericUpDown2.Location = new Point(140, 37);
-            numericUpDown2.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDown2.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(57, 23);
-            numericUpDown2.TabIndex = 5;
-            numericUpDown2.Value = new decimal(new int[] { 200, 0, 0, 0 });
-            // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(button1);
+            tabPage3.Controls.Add(label8);
+            tabPage3.Controls.Add(ExpB_NBx);
             tabPage3.Location = new Point(4, 44);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
@@ -269,8 +205,40 @@
             tabPage3.Text = "Exponential";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            button1.Location = new Point(178, 35);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 9;
+            button1.Text = "Generate";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += GenerateExp;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(8, 8);
+            label8.Name = "label8";
+            label8.Size = new Size(34, 15);
+            label8.TabIndex = 7;
+            label8.Text = "Base:";
+            // 
+            // ExpB_NBx
+            // 
+            ExpB_NBx.DecimalPlaces = 2;
+            ExpB_NBx.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            ExpB_NBx.Location = new Point(60, 6);
+            ExpB_NBx.Maximum = new decimal(new int[] { 12, 0, 0, 65536 });
+            ExpB_NBx.Minimum = new decimal(new int[] { 105, 0, 0, 131072 });
+            ExpB_NBx.Name = "ExpB_NBx";
+            ExpB_NBx.Size = new Size(193, 23);
+            ExpB_NBx.TabIndex = 8;
+            ExpB_NBx.Value = new decimal(new int[] { 107, 0, 0, 131072 });
+            // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(button2);
             tabPage4.Location = new Point(4, 44);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
@@ -312,16 +280,16 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(label7);
-            groupBox3.Controls.Add(CPbNbx);
+            groupBox3.Controls.Add(BetaNbx);
             groupBox3.Controls.Add(label6);
-            groupBox3.Controls.Add(CPwNbx);
+            groupBox3.Controls.Add(WidthNbx);
             groupBox3.Controls.Add(label5);
             groupBox3.Controls.Add(ChangeColorBtn);
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(DescTbx);
-            groupBox3.Controls.Add(CPn_NBx);
+            groupBox3.Controls.Add(NumOfPoints_NBx);
             groupBox3.Controls.Add(label4);
-            groupBox3.Controls.Add(CpcPbx);
+            groupBox3.Controls.Add(ColorPbx);
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Location = new Point(3, 19);
             groupBox3.Name = "groupBox3";
@@ -339,17 +307,17 @@
             label7.TabIndex = 14;
             label7.Text = "β (Beta):";
             // 
-            // CPbNbx
+            // BetaNbx
             // 
-            CPbNbx.DecimalPlaces = 2;
-            CPbNbx.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            CPbNbx.Location = new Point(119, 45);
-            CPbNbx.Maximum = new decimal(new int[] { 99, 0, 0, 131072 });
-            CPbNbx.Name = "CPbNbx";
-            CPbNbx.Size = new Size(57, 23);
-            CPbNbx.TabIndex = 15;
-            CPbNbx.Value = new decimal(new int[] { 90, 0, 0, 131072 });
-            CPbNbx.ValueChanged += BetaValueChanged;
+            BetaNbx.DecimalPlaces = 2;
+            BetaNbx.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            BetaNbx.Location = new Point(119, 45);
+            BetaNbx.Maximum = new decimal(new int[] { 99, 0, 0, 131072 });
+            BetaNbx.Name = "BetaNbx";
+            BetaNbx.Size = new Size(57, 23);
+            BetaNbx.TabIndex = 15;
+            BetaNbx.Value = new decimal(new int[] { 90, 0, 0, 131072 });
+            BetaNbx.ValueChanged += BetaValueChanged;
             // 
             // label6
             // 
@@ -360,16 +328,16 @@
             label6.TabIndex = 12;
             label6.Text = "Width:";
             // 
-            // CPwNbx
+            // WidthNbx
             // 
-            CPwNbx.DecimalPlaces = 1;
-            CPwNbx.Location = new Point(119, 74);
-            CPwNbx.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            CPwNbx.Name = "CPwNbx";
-            CPwNbx.Size = new Size(57, 23);
-            CPwNbx.TabIndex = 13;
-            CPwNbx.Value = new decimal(new int[] { 5, 0, 0, 0 });
-            CPwNbx.ValueChanged += WidthValueChanged;
+            WidthNbx.DecimalPlaces = 1;
+            WidthNbx.Location = new Point(119, 74);
+            WidthNbx.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            WidthNbx.Name = "WidthNbx";
+            WidthNbx.Size = new Size(57, 23);
+            WidthNbx.TabIndex = 13;
+            WidthNbx.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            WidthNbx.ValueChanged += WidthValueChanged;
             // 
             // label5
             // 
@@ -407,15 +375,15 @@
             DescTbx.TabIndex = 10;
             DescTbx.Text = "Main Series";
             // 
-            // CPn_NBx
+            // NumOfPoints_NBx
             // 
-            CPn_NBx.Location = new Point(119, 103);
-            CPn_NBx.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
-            CPn_NBx.Name = "CPn_NBx";
-            CPn_NBx.Size = new Size(57, 23);
-            CPn_NBx.TabIndex = 1;
-            CPn_NBx.Value = new decimal(new int[] { 100, 0, 0, 0 });
-            CPn_NBx.ValueChanged += NumberOfPointsValueChanged;
+            NumOfPoints_NBx.Location = new Point(119, 103);
+            NumOfPoints_NBx.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
+            NumOfPoints_NBx.Name = "NumOfPoints_NBx";
+            NumOfPoints_NBx.Size = new Size(57, 23);
+            NumOfPoints_NBx.TabIndex = 1;
+            NumOfPoints_NBx.Value = new decimal(new int[] { 100, 0, 0, 0 });
+            NumOfPoints_NBx.ValueChanged += NumberOfPointsValueChanged;
             // 
             // label4
             // 
@@ -426,15 +394,25 @@
             label4.TabIndex = 7;
             label4.Text = "Color:";
             // 
-            // CpcPbx
+            // ColorPbx
             // 
-            CpcPbx.BackColor = Color.Red;
-            CpcPbx.Location = new Point(119, 132);
-            CpcPbx.Name = "CpcPbx";
-            CpcPbx.Size = new Size(57, 36);
-            CpcPbx.TabIndex = 8;
-            CpcPbx.TabStop = false;
-            CpcPbx.DoubleClick += ChangeSeriesColor;
+            ColorPbx.BackColor = Color.Red;
+            ColorPbx.Location = new Point(119, 132);
+            ColorPbx.Name = "ColorPbx";
+            ColorPbx.Size = new Size(57, 36);
+            ColorPbx.TabIndex = 8;
+            ColorPbx.TabStop = false;
+            ColorPbx.DoubleClick += ChangeSeriesColor;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(98, 110);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 10;
+            button2.Text = "Generate";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += GenerateSigmoid;
             // 
             // Form1
             // 
@@ -453,16 +431,16 @@
             tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)CPc_NBx).EndInit();
             ((System.ComponentModel.ISupportInitialize)CPs_NBx).EndInit();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ExpB_NBx).EndInit();
+            tabPage4.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)CPbNbx).EndInit();
-            ((System.ComponentModel.ISupportInitialize)CPwNbx).EndInit();
-            ((System.ComponentModel.ISupportInitialize)CPn_NBx).EndInit();
-            ((System.ComponentModel.ISupportInitialize)CpcPbx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)BetaNbx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)WidthNbx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumOfPoints_NBx).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ColorPbx).EndInit();
             ResumeLayout(false);
         }
 
@@ -473,13 +451,12 @@
         private GroupBox groupBox2;
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private TabPage tabPage2;
         private TabPage tabPage3;
         private TabPage tabPage4;
         private TabPage tabPage5;
         private TabPage tabPage6;
         private TabPage tabPage7;
-        private NumericUpDown CPn_NBx;
+        private NumericUpDown NumOfPoints_NBx;
         private Label label1;
         private NumericUpDown CPc_NBx;
         private Label label2;
@@ -489,18 +466,17 @@
         private ToolTip toolTip1;
         private TextBox DescTbx;
         private Label label5;
-        private PictureBox CpcPbx;
+        private PictureBox ColorPbx;
         private Label label4;
         private GroupBox groupBox3;
         private Button ChangeColorBtn;
         private Label label6;
-        private NumericUpDown CPwNbx;
+        private NumericUpDown WidthNbx;
         private Label label7;
-        private NumericUpDown CPbNbx;
+        private NumericUpDown BetaNbx;
+        private Button button1;
         private Label label8;
-        private NumericUpDown numericUpDown1;
-        private Label label9;
-        private NumericUpDown numericUpDown2;
+        private NumericUpDown ExpB_NBx;
         private Button button2;
     }
 }
