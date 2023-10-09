@@ -1,4 +1,4 @@
-# The Relationship Between Beta Values, Warm-Up Period, and EWMA Accuracy
+# Exploring the Impact of Beta on Exponentially Weighted Moving Average (EWMA) Performance: A Comparative Analysis
 
 ## Abstract
 This research paper aims to explore the relationship between the beta value, warm-up period, and the accuracy of the Exponentially Weighted Moving Average (EWMA) technique. The objectives of this study are twofold: (1) to investigate how different beta values affect the EWMA curve's proximity to the actual average, and (2) to analyze the impact of beta values on different types of charts, particularly those with high rates of directional change and/or rapid overall changes. The findings provide insights into the selection of optimal beta values for specific series shapes and shed light on the behavior of the EWMA under different scenarios.
