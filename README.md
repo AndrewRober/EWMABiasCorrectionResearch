@@ -48,4 +48,29 @@ The choice of the beta value depends on the specific characteristics of the data
 
 To visually demonstrate these behaviors, a GIF is provided, showcasing the EWMA curves with different beta values. The GIF reinforces the findings, illustrating how higher beta values align the EWMA closely with the actual data curve, while lower beta values trend towards the overall average curve.
 
+![ezgif com-gif-maker (1)](https://github.com/AndrewRober/EWMABiasCorrectionResearch/assets/54873972/bd1ebf2e-04e3-4afc-89da-3af49736de51)
+
+## Memory Length and Common Beta Values
+
+The memory length of the Exponentially Weighted Moving Average (EWMA) can be approximated using the formula: memory = 1 / (1 - β), where β (beta) is the given value. This formula provides an estimation of the number of data points that significantly influence the EWMA calculation. Here are some common beta values and their corresponding memory lengths:
+
+| Beta Value | Memory Length |
+|------------|---------------|
+| 0.9        | 10 points     |
+| 0.98       | 50 points     |
+| 0.99       | 100 points    |
+
+These values are provided as a general guideline and can be adjusted based on the specific requirements and characteristics of the data.
+
+## Conclusion
+
+In conclusion, the selection of small or large beta values in the Exponentially Weighted Moving Average (EWMA) depends on the trade-off between responsiveness and smoothness. 
+
+Using a small beta value (e.g., close to 0.9) in the EWMA provides a more responsive curve that quickly adapts to changes in the data. This can be beneficial for capturing rapid changes or short-term trends. However, a smaller beta value also leads to a shorter memory length, where the influence of past data diminishes more quickly. This may result in a higher level of noise and fluctuations in the EWMA curve, making it less suitable for capturing long-term trends or stable patterns.
+
+On the other hand, using a large beta value (e.g., close to 1) in the EWMA results in a smoother curve that provides a longer memory length. The EWMA with a larger beta value is more suitable for capturing long-term trends and stable patterns. However, it may exhibit slower responses to rapid changes in the data.
+
+It is essential to carefully select the beta value based on the specific characteristics of the data and the desired trade-off between responsiveness and smoothness. Additionally, considering the memory length associated with different beta values can provide insights into the influence of past data on the EWMA calculation.
+
+Overall, understanding the effect of beta values on the EWMA curve's behavior and memory length allows practitioners to make informed decisions and select the appropriate beta value based on the specific requirements of their data analysis tasks.
 
