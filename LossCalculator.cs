@@ -17,7 +17,7 @@
         /// float loss = LossCalculator.MeanSquaredError(mySeries1, mySeries2);
         /// </code>
         /// </example>
-        public static float MeanSquaredError(List<Point> series1, List<Point> series2)
+        public static float MeanSquaredError(List<PointF> series1, List<PointF> series2)
         {
             if (series1.Count != series2.Count)
                 throw new ArgumentException("Series must have the same length");
@@ -42,7 +42,7 @@
         /// <param name="series1">The first series of points.</param>
         /// <param name="series2">The second series of points.</param>
         /// <returns>The MAE loss between the two input series.</returns>
-        public static float MeanAbsoluteError(List<Point> series1, List<Point> series2)
+        public static float MeanAbsoluteError(List<PointF> series1, List<PointF> series2)
         {
             if (series1.Count != series2.Count)
                 throw new ArgumentException("Series must have the same length");
@@ -67,7 +67,7 @@
         /// <param name="series1">The first series of points.</param>
         /// <param name="series2">The second series of points.</param>
         /// <returns>The RMSE loss between the two input series.</returns>
-        public static float RootMeanSquaredError(List<Point> series1, List<Point> series2) => (float)Math.Sqrt(MeanSquaredError(series1, series2));
+        public static float RootMeanSquaredError(List<PointF> series1, List<PointF> series2) => (float)Math.Sqrt(MeanSquaredError(series1, series2));
 
         /// <summary>
         /// Calculates the mean absolute percentage error (MAPE) loss between two series of points.
@@ -75,7 +75,7 @@
         /// <param name="series1">The first series of points.</param>
         /// <param name="series2">The second series of points.</param>
         /// <returns>The MAPE loss between the two input series.</returns>
-        public static float MeanAbsolutePercentageError(List<Point> series1, List<Point> series2)
+        public static float MeanAbsolutePercentageError(List<PointF> series1, List<PointF> series2)
         {
             if (series1.Count != series2.Count)
                 throw new ArgumentException("Series must have the same length");
@@ -111,7 +111,7 @@
         /// Console.WriteLine($"MSE: {errors.MSE}, MAE: {errors.MAE}, RMSE: {errors.RMSE}, MAPE: {errors.MAPE}");
         /// </code>
         /// </example>
-        public static (float MSE, float MAE, float RMSE, float MAPE) CalculateAllErrors(List<Point> series1, List<Point> series2)
+        public static (float MSE, float MAE, float RMSE, float MAPE) CalculateAllErrors(List<PointF> series1, List<PointF> series2)
         {
             if (series1.Count != series2.Count)
                 throw new ArgumentException("Series must have the same length");

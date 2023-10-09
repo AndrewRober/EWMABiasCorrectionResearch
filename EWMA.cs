@@ -45,15 +45,15 @@
         /// var ewmaSeries = ewma.CalculateSeries(myPoints, 0.9f, initialValue);
         /// </code>
         /// </example>
-        public List<Point> CalculateSeries(List<Point> points, float beta, float vInit = 0.0f)
+        public List<PointF> CalculateSeries(List<PointF> points, float beta, float vInit = 0.0f)
         {
-            List<Point> result = new List<Point>();
+            List<PointF> result = new List<PointF>();
             float vPrev = vInit;
 
             for (int i = 0; i < points.Count; i++)
             {
                 vPrev = Calculate(vPrev, beta, points[i].Y);
-                result.Add(new Point(points[i].X, vPrev));
+                result.Add(new PointF(points[i].X, vPrev));
             }
 
             return result;

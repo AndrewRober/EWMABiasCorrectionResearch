@@ -16,16 +16,16 @@
         /// var averageSeries = AverageCalculator.CalculateSeries(myPoints);
         /// </code>
         /// </example>
-        public static List<Point> CalculateSeries(List<Point> points)
+        public static List<PointF> CalculateSeries(List<PointF> points)
         {
             float sum = 0;
-            var averages = new List<Point>();
+            var averages = new List<PointF>();
 
             for (int i = 0; i < points.Count; i++)
             {
                 sum += points[i].Y;
                 float average = sum / (i + 1);
-                averages.Add(new Point(i, average));
+                averages.Add(new PointF(i, average));
             }
 
             return averages;
