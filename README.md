@@ -138,3 +138,46 @@ On the other hand, when using tiny or mini batch sizes, or when the dataset is s
 It is crucial to consider the trade-off between computational cost and accuracy when deciding whether to include bias correction in the EWMA calculation. In scenarios with large batch sizes or substantial computational resources, incorporating bias correction becomes essential. However, when using tiny/mini batch sizes or datasets with ample data and relatively inexpensive epochs, the computational cost of applying bias correction to every batch may outweigh the benefits gained from the correction.
 
 Understanding the effect of ignoring bias correction in different batch size scenarios helps researchers and practitioners make informed decisions on when to apply bias correction, ensuring accurate and reliable estimates from the EWMA while considering computational constraints.
+
+
+## Appendix C: RMSprop: Adaptive Learning Rate Optimization
+
+In this appendix, we delve into RMSprop, an adaptive learning rate optimization algorithm that complements Gradient Descent with momentum. RMSprop adjusts the learning rate for each parameter individually based on the magnitude of its gradient. It addresses the challenge of selecting an appropriate learning rate by adapting the learning rate during the optimization process.
+
+### Abstract General Idea of RMSprop
+
+RMSprop aims to accelerate the optimization process by adapting the learning rate based on the recent history of the gradients. It achieves this by maintaining a running average of the squared gradients for each parameter. The algorithm scales the learning rate for each parameter based on the magnitude of its gradients, allowing for more efficient updates and faster convergence.
+
+### RMSprop Equations
+
+RMSprop maintains a running average of the squared gradients, denoted as Sdw for the weights (W) and Sdb for the biases (b). The equations for updating Sdw and Sdb are as follows:
+
+$$ Sdw = \beta \cdot Sdw + (1 - \beta) \cdot (dW)^2 $$ 
+
+$$ Sdb = \beta \cdot Sdb + (1 - \beta) \cdot (db)^2 $$ 
+
+Here, \beta is a hyperparameter that determines the weight given to the previous squared gradients compared to the current squared gradient. By accumulating the squared gradients over time, RMSprop calculates an exponentially decaying average of the squared gradients.
+
+### Initialization and Direction of Backpropagation
+
+RMSprop initializes Sdw and Sdb to small values, typically close to zero. This initialization helps ensure that the optimization process starts with a relatively smaller influence of the squared gradients. As the optimization progresses, Sdw and Sdb grow to capture the accumulated information about the gradients.
+
+The smaller initialization of Sdw compared to Sdb plays a crucial role in the direction of backpropagation. The squared gradients effectively act as an additional term that influences the updates in the backward pass. By maintaining a smaller Sdw, RMSprop places a relatively larger emphasis on the weight updates, allowing for efficient and effective backpropagation.
+
+### Efficiency with Gradient Descent with Momentum
+
+RMSprop works efficiently in conjunction with Gradient Descent with momentum. The momentum term helps the optimization algorithm to accumulate past gradients and maintain a consistent direction during the optimization process. By incorporating the squared gradients through RMSprop, the algorithm can adaptively adjust the learning rate for each parameter based on the magnitude of its gradients. This adaptivity allows for more efficient learning, as it prevents large gradient updates that can lead to overshooting or getting stuck in steep regions.
+
+### Update Equations for Weights and Biases
+
+The update equations for the weights (W) and biases (b) using RMSprop are as follows:
+
+
+$$ W := W - \frac{\alpha}{\sqrt{Sdw + \epsilon}} \cdot dW $$ 
+
+$$ b := b - \frac{\alpha}{\sqrt{Sdb + \epsilon}} \cdot db $$ 
+
+
+Here, \alpha is the learning rate, \epsilon is a small constant (e.g., 1e-8) added for numerical stability, and dW and db are the gradients with respect to the weights and biases, respectively. The division by the square root of Sdw and Sdb effectively scales the gradients based on the accumulated information about the squared gradients.
+
+In summary, RMSprop adapts the learning rate based on the recent history of the squared gradients, providing an efficient way to adjust the updates during the optimization process. The integration of RMSprop with Gradient Descent with momentum allows for more effective and stable optimization, enhanced backpropagation, and efficient exploration of the parameter space.
