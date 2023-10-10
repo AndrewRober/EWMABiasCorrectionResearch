@@ -10,7 +10,8 @@
 6. [The Effect of Different Beta Values on EWMA Behavior: Capturing Actual Data Curve and Overall Average](#the-effect-of-different-beta-values-on-ewma-behavior-capturing-actual-data-curve-and-overall-average)
 7. [Memory Length and Common Beta Values](#memory-length-and-common-beta-values)
 8. [Conclusion](#conclusion)
-9. [Appendix: Relationship Between Beta Value and Gradient Descent](#appendix-relationship-between-beta-value-and-gradient-descent)
+9. [Appendix A: Relationship Between Beta Value and Gradient Descent](\#appendix-a-relationship-between-beta-value-and-gradient-descent)
+10. [Appendix B: Effect of Ignoring Bias Correction with Different Batch Sizes](\#appendix-b-effect-of-ignoring-bias-correction-with-different-batch-sizes)
 
 ## Abstract
 This research paper aims to explore the relationship between the beta value, warm-up period, and the accuracy of the Exponentially Weighted Moving Average (EWMA) technique. The objectives of this study are twofold: (1) to investigate how different beta values affect the EWMA curve's proximity to the actual average, and (2) to analyze the impact of beta values on different types of charts, particularly those with high rates of directional change and/or rapid overall changes. The findings provide insights into the selection of optimal beta values for specific series shapes and shed light on the behavior of the EWMA under different scenarios.
@@ -86,7 +87,7 @@ It is essential to carefully select the beta value based on the specific charact
 
 Overall, understanding the effect of beta values on the EWMA curve's behavior and memory length allows practitioners to make informed decisions and select the appropriate beta value based on the specific requirements of their data analysis tasks.
 
-## Appendix: Relationship Between Beta Value and Gradient Descent
+## Appendix A: Relationship Between Beta Value and Gradient Descent
 
 In this appendix, we explore the relationship between the beta value in the Exponentially Weighted Moving Average (EWMA) and its connection to Gradient Descent. Understanding this relationship is crucial for leveraging the benefits of EWMA in the context of optimizing the learning process.
 
@@ -125,3 +126,15 @@ In this context, the integration of EWMA into Gradient Descent with momentum bec
 While Gradient Descent with momentum also provides benefits when using the entire dataset (batch), its advantages are even more pronounced when dealing with mini-batches, making it a valuable technique for training machine learning models in scenarios where computational resources and memory are constrained.
 
 This integration of EWMA and Gradient Descent provides an enhanced optimization technique that balances responsiveness and stability in the learning process.
+
+## Appendix B: Effect of Ignoring Bias Correction with Different Batch Sizes
+
+In this appendix, we discuss the effect of ignoring bias correction in the Exponentially Weighted Moving Average (EWMA) when using different batch sizes. The bias correction becomes particularly essential when dealing with big batch sizes or even the entire batch, where the first few operations can consume a significant amount of the input data.
+
+When using a large batch size, the initial operations of the EWMA calculation can be computationally expensive and may consume a substantial portion of the available data. Ignoring bias correction in this scenario can lead to biased estimates and inaccurate representations of the underlying series. The bias correction factor helps mitigate this issue by accounting for the initial bias and providing more reliable estimates, especially during the warm-up period.
+
+On the other hand, when using tiny or mini batch sizes, or when the dataset is significantly large and epochs are relatively cheap, the effect of initial bias is relatively less pronounced. In such cases, the impact of ignoring bias correction may be negligible, and the computational cost of applying bias correction to every batch may not be necessary.
+
+It is crucial to consider the trade-off between computational cost and accuracy when deciding whether to include bias correction in the EWMA calculation. In scenarios with large batch sizes or substantial computational resources, incorporating bias correction becomes essential. However, when using tiny/mini batch sizes or datasets with ample data and relatively inexpensive epochs, the computational cost of applying bias correction to every batch may outweigh the benefits gained from the correction.
+
+Understanding the effect of ignoring bias correction in different batch size scenarios helps researchers and practitioners make informed decisions on when to apply bias correction, ensuring accurate and reliable estimates from the EWMA while considering computational constraints.
