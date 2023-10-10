@@ -1,5 +1,17 @@
 # Exploring the Impact of Beta on Exponentially Weighted Moving Average (EWMA) Performance: A Comparative Analysis
 
+# Table of Contents
+
+1. [Abstract](#abstract)
+2. [Introduction](#introduction)
+3. [Exponentially Weighted Moving Average and Beta](#exponentially-weighted-moving-average-and-beta)
+4. [Bias Correction and Warm-Up Period](#bias-correction-and-warm-up-period)
+5. [The Relationship Between Beta, Warm-Up Time, and Accuracy](#the-relationship-between-beta-warm-up-time-and-accuracy)
+6. [The Effect of Different Beta Values on EWMA Behavior: Capturing Actual Data Curve and Overall Average](#the-effect-of-different-beta-values-on-ewma-behavior-capturing-actual-data-curve-and-overall-average)
+7. [Memory Length and Common Beta Values](#memory-length-and-common-beta-values)
+8. [Conclusion](#conclusion)
+9. [Appendix: Relationship Between Beta Value and Gradient Descent](#appendix-relationship-between-beta-value-and-gradient-descent)
+
 ## Abstract
 This research paper aims to explore the relationship between the beta value, warm-up period, and the accuracy of the Exponentially Weighted Moving Average (EWMA) technique. The objectives of this study are twofold: (1) to investigate how different beta values affect the EWMA curve's proximity to the actual average, and (2) to analyze the impact of beta values on different types of charts, particularly those with high rates of directional change and/or rapid overall changes. The findings provide insights into the selection of optimal beta values for specific series shapes and shed light on the behavior of the EWMA under different scenarios.
 
@@ -74,3 +86,42 @@ It is essential to carefully select the beta value based on the specific charact
 
 Overall, understanding the effect of beta values on the EWMA curve's behavior and memory length allows practitioners to make informed decisions and select the appropriate beta value based on the specific requirements of their data analysis tasks.
 
+## Appendix: Relationship Between Beta Value and Gradient Descent
+
+In this appendix, we explore the relationship between the beta value in the Exponentially Weighted Moving Average (EWMA) and its connection to Gradient Descent. Understanding this relationship is crucial for leveraging the benefits of EWMA in the context of optimizing the learning process.
+
+### Smoothing Effect and Slowing Oscillations
+
+Choosing the appropriate beta value in EWMA can result in a smoothing effect and help mitigate rapid changes. This behavior is particularly relevant when utilizing EWMA in the context of Gradient Descent optimization algorithms, such as Gradient Descent with momentum.
+
+The EWMA, with its ability to assign weights to recent data points, acts as a smoothing mechanism. It reduces the impact of sudden fluctuations in the gradients or parameter updates, leading to a more stable optimization process. By incorporating EWMA into Gradient Descent, specifically in the calculation of the moving average of the gradients (Vdw) and biases (Vdb), the optimization algorithm can mitigate the oscillations and achieve more consistent updates.
+
+### Gradient Descent with Momentum Equations
+
+To illustrate the integration of EWMA into Gradient Descent with momentum, we provide the equations for the forward propagation and backward propagation on a mini-batch, calculating Vdw, Vdb, and updating the weights (W) and biases (B):
+
+
+$$
+\begin{align*}
+Z^{[l]} &= W^{[l]} \cdot A^{[l-1]} + b^{[l]} \\
+A^{[l]} &= g^{[l]}(Z^{[l]}) \\
+dZ^{[l]} &= dA^{[l]} \cdot g'^{[l]}(Z^{[l]}) \\
+dW^{[l]} &= \frac{1}{m} \cdot dZ^{[l]} \cdot (A^{[l-1]})^T + \beta \cdot VdW^{[l-1]} \\
+db^{[l]} &= \frac{1}{m} \cdot \sum(dZ^{[l]}, \text{axis}=1, \text{keepdims}=True) + \beta \cdot Vdb^{[l-1]} \\
+VdW^{[l]} &= \beta \cdot VdW^{[l-1]} + (1 - \beta) \cdot dW^{[l]} \\
+Vdb^{[l]} &= \beta \cdot Vdb^{[l-1]} + (1 - \beta) \cdot db^{[l]} \\
+W^{[l]} &= W^{[l]} - \alpha \cdot VdW^{[l]} \\
+B^{[l]} &= B^{[l]} - \alpha \cdot Vdb^{[l]}
+\end{align*}
+$$
+
+
+In the above equations, the beta value (\(\beta\)) is used to control the weighting of the previous gradients (VdW and Vdb) in the calculation of the current gradients. The higher the beta value, the more emphasis is given to the previous gradients, resulting in a smoother optimization process.
+
+Additionally, Gradient Descent with momentum becomes even more crucial when utilizing mini-batches in the training process. Mini-batches are randomly sampled subsets of the dataset used for each iteration of the optimization algorithm. While mini-batches provide computational efficiency and reduce the memory requirements compared to using the entire dataset (batch), they may not always fully represent the overall dataset.
+
+In this context, the integration of EWMA into Gradient Descent with momentum becomes particularly beneficial. The EWMA allows for a more stable estimation of the gradients by smoothing out potential inconsistencies introduced by the mini-batches. By incorporating EWMA, the optimization algorithm can effectively mitigate the impact of noisy or biased gradients that may arise from using mini-batches, leading to more reliable and accurate updates of the model parameters. This results in improved convergence and better generalization performance.
+
+While Gradient Descent with momentum also provides benefits when using the entire dataset (batch), its advantages are even more pronounced when dealing with mini-batches, making it a valuable technique for training machine learning models in scenarios where computational resources and memory are constrained.
+
+This integration of EWMA and Gradient Descent provides an enhanced optimization technique that balances responsiveness and stability in the learning process.
