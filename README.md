@@ -12,6 +12,7 @@
 8. [Conclusion](#conclusion)
 9. [Appendix A: Relationship Between Beta Value and Gradient Descent](\#appendix-a-relationship-between-beta-value-and-gradient-descent)
 10. [Appendix B: Effect of Ignoring Bias Correction with Different Batch Sizes](\#appendix-b-effect-of-ignoring-bias-correction-with-different-batch-sizes)
+11. [Appendix C: RMSprop: Adaptive Learning Rate Optimization](\#appendix-c-rmsprop-adaptive-learning-rate-optimization)
 
 ## Abstract
 This research paper aims to explore the relationship between the beta value, warm-up period, and the accuracy of the Exponentially Weighted Moving Average (EWMA) technique. The objectives of this study are twofold: (1) to investigate how different beta values affect the EWMA curve's proximity to the actual average, and (2) to analyze the impact of beta values on different types of charts, particularly those with high rates of directional change and/or rapid overall changes. The findings provide insights into the selection of optimal beta values for specific series shapes and shed light on the behavior of the EWMA under different scenarios.
